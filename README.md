@@ -1,6 +1,6 @@
-# dbhandling
 
-With a simple React Native application, you can add games to the SQLite database.
+
+Simple React Native application, you can add games to the SQLite database.
 Games can be removed from the list by swiping to the right.
 
 
