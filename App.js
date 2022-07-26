@@ -49,16 +49,6 @@ const App = () => {
       </View>
     );
   };
-  // For some reason this did not work for me
-  // const RenderItem = ({item}) => {
-  //   <Swipeable renderRightActions={RenderRight}>
-  //     <View style={styles.item}>
-  //       <Text style={{fontWeight: '600'}}>
-  //         {item.item.id}) {item.item.type} {item.item.size}
-  //       </Text>
-  //     </View>
-  //   </Swipeable>;
-  // };
 
   const handleName = text => {
     setName(text);
@@ -79,8 +69,7 @@ const App = () => {
   async function readAllGames() {
     await fetchAllGames()
       .then(res => {
-        //The parametr res has the value which is returned from the fetchAllBoots function in db.js
-        // console.log(res); //For debugging purposes to see the data in the console screen
+        //The parameter res has the value which is returned from the fetchAllGames function in db.js
         setGamesList(res);
       })
       .catch(err => {

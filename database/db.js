@@ -7,8 +7,6 @@ var tableName = 'game';
 export const init = () => {
   const promise = new Promise((resolve, reject) => {
     db.transaction(tx => {
-      // tx.executeSql('DROP TABLE IF EXISTS boot', []); //uncomment this if needed - sometimes it is good to empty the table
-      //By default, primary key is auto_incremented - we do not add anything to that column
       tx.executeSql(
         'create table if not exists ' +
           tableName +
@@ -75,7 +73,7 @@ export const deleteGame = id => {
 export const fetchAllGames = () => {
   const promise = new Promise((resolve, reject) => {
     db.transaction(tx => {
-      //Here we select all from the table fish
+      //Here we select all from the table games
       tx.executeSql(
         'select * from ' + tableName,
         [],
@@ -83,10 +81,8 @@ export const fetchAllGames = () => {
           let items = []; //Create a new empty Javascript array
           //And add all the items of the result (database rows/records) into that table
           for (let i = 0; i < result.rows.length; i++) {
-            items.push(result.rows.item(i)); //The form of an item is {"type": "Leather boot", "id": 1, "size": 47}
-            //console.log(result.rows.item(i)); //For debugging purposes to see the data in console window
+            items.push(result.rows.item(i));
           }
-          //console.log(items); //For debugging purposes to see the data in console window
           resolve(items); //The data the Promise will have when returned
         },
         (tx, err) => {
